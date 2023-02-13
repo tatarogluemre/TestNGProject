@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="All Test Suite">
+    <listeners>
+        <listener class-name="techpro.utilities.Listeners"></listener>
+    </listeners>
+    <test verbose="2" preserve-order="true"
+          name="C:/Users/CASPER/IdeaProjects/TestNGProject/src/test/java/techpro/tests">
+        <classes>
+            <class name="techpro.tests.BillingAddressAddTest">
+                <methods>
+                    <include name="tc01LoginMyAccount"/>
+                    <include name="tc02BlankFirstName"/>
+                    <include name="tc03BlankLastName"/>
+                    <include name="tc04BlankCountry"/>
+                    <include name="tc05BlankStreet"/>
+                    <include name="tc06BlankZipCode"/>
+                    <include name="tc07BlankTownCity"/>
+                    <include name="tc08BlankProvinceState"/>
+                    <include name="tc09BlankPhone"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+</suite>
