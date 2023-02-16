@@ -38,8 +38,11 @@ public class BillingAddressAddTest {
 
     @Test(dependsOnMethods = "tc01LoginMyAccount")
     public void tc02BlankFirstName(){
-        billingAddressAdd("","tatar","techpro","Turkey","Uzunİnce",
-                "Dünya","12334","Erzurum","Erzurum","5326789099");
+        billingAddressAdd("",ConfigReader.getProperty("lastname"),ConfigReader.getProperty("company"),
+                ConfigReader.getProperty("country"),ConfigReader.getProperty("street"),
+                ConfigReader.getProperty("apartment"),ConfigReader.getProperty("zipcode"),
+                ConfigReader.getProperty("towncity"),ConfigReader.getProperty("province"),
+                ConfigReader.getProperty("phone"));
         ReusableMethods.waitForVisibility(addressAdd.verifyFirstName,15);
         addressAdd.verifyFirstName.getText().equals("First name is a required field.");
         Reporter.log("First Name Boş Geçilemez");
@@ -47,8 +50,11 @@ public class BillingAddressAddTest {
     }
     @Test(dependsOnMethods = "tc01LoginMyAccount")
     public void tc03BlankLastName(){
-        billingAddressAdd("Emre","","techpro","Turkey","Uzunİnce",
-                "Dünya","12334","Erzurum","Erzurum","5326789099");
+        billingAddressAdd(ConfigReader.getProperty("firstname"),"",
+                ConfigReader.getProperty("company"),ConfigReader.getProperty("country"),
+                ConfigReader.getProperty("street"),ConfigReader.getProperty("apartment"),
+                ConfigReader.getProperty("zipcode"),ConfigReader.getProperty("towncity"),
+                ConfigReader.getProperty("province"),ConfigReader.getProperty("phone"));
         ReusableMethods.waitForVisibility(addressAdd.verifyLastName,15);
         addressAdd.verifyLastName.getText().equals("Last name is a required field.");
         Reporter.log("Last Name Boş Geçilemez");
@@ -57,9 +63,11 @@ public class BillingAddressAddTest {
     }
     @Test(dependsOnMethods = "tc01LoginMyAccount")
     public void tc04BlankCountry(){
-
-        billingAddressAdd("Emre","tatar","techpro",null,"Uzunİnce",
-                "Dünya","12334","Erzurum","","5326789099");
+        billingAddressAdd(ConfigReader.getProperty("firstname"),ConfigReader.getProperty("lastname"),ConfigReader.getProperty("company"),
+               null,ConfigReader.getProperty("street"),
+                ConfigReader.getProperty("apartment"),ConfigReader.getProperty("zipcode"),
+                ConfigReader.getProperty("towncity"),ConfigReader.getProperty("province"),
+                ConfigReader.getProperty("phone"));
         ReusableMethods.waitForVisibility(addressAdd.verifyCountry,15);
         addressAdd.verifyCountry.getText().equals("Country/Region is a required field.");
         Reporter.log("Country Boş Geçilemez");
@@ -67,40 +75,55 @@ public class BillingAddressAddTest {
     }
     @Test(dependsOnMethods = "tc01LoginMyAccount")
     public void tc05BlankStreet(){
-        billingAddressAdd("Emre","tatar","techpro","Turkey","",
-                "Dünya","12334","Erzurum","Erzurum","5326789099");
+        billingAddressAdd(ConfigReader.getProperty("firstname"),ConfigReader.getProperty("lastname"),
+                ConfigReader.getProperty("company"),ConfigReader.getProperty("country"),
+               "",ConfigReader.getProperty("apartment"),
+                ConfigReader.getProperty("zipcode"),ConfigReader.getProperty("towncity"),
+                ConfigReader.getProperty("province"),ConfigReader.getProperty("phone"));
         ReusableMethods.waitForVisibility(addressAdd.verifyStreet,15);
         addressAdd.verifyStreet.getText().equals("Street address is a required field.");
         Reporter.log("Street Boş Geçilemez");
             }
     @Test(dependsOnMethods = "tc01LoginMyAccount")
     public void tc06BlankZipCode(){
-        billingAddressAdd("Emre","tatar","techpro","Turkey","Uzunİnce",
-                "Dünya","","Erzurum","Erzurum","5326789099");
+        billingAddressAdd(ConfigReader.getProperty("firstname"),ConfigReader.getProperty("lastname"),
+                ConfigReader.getProperty("company"),ConfigReader.getProperty("country"),
+                ConfigReader.getProperty("street"),ConfigReader.getProperty("apartment"),
+               "",ConfigReader.getProperty("towncity"),
+                ConfigReader.getProperty("province"),ConfigReader.getProperty("phone"));
         ReusableMethods.waitForVisibility(addressAdd.verifyZipCode,15);
         addressAdd.verifyZipCode.getText().equals("Postcode / ZIP is a required field.");
         Reporter.log("ZipCode Boş Geçilemez");
     }
     @Test(dependsOnMethods = "tc01LoginMyAccount")
     public void tc07BlankTownCity(){
-        billingAddressAdd("Emre","tatar","techpro","Turkey","Uzunİnce",
-                "Dünya","1234","","Erzurum","5326789099");
+        billingAddressAdd(ConfigReader.getProperty("firstname"),ConfigReader.getProperty("lastname"),
+                ConfigReader.getProperty("company"),ConfigReader.getProperty("country"),
+                ConfigReader.getProperty("street"),ConfigReader.getProperty("apartment"),
+                ConfigReader.getProperty("zipcode"),"",
+                ConfigReader.getProperty("province"),ConfigReader.getProperty("phone"));
         ReusableMethods.waitForVisibility(addressAdd.verifyTownCity,15);
         addressAdd.verifyTownCity.getText().equals("Town / City is a required field.");
         Reporter.log("TownCity Boş Geçilemez");
     }
     @Test(dependsOnMethods = "tc01LoginMyAccount")
     public void tc08BlankProvinceState(){
-        billingAddressAdd("Emre","tatar","techpro","Turkey","Uzunİnce",
-                "Dünya","1234","Erzurum",null,"5326789099");
+        billingAddressAdd(ConfigReader.getProperty("firstname"),ConfigReader.getProperty("lastname"),
+                ConfigReader.getProperty("company"),ConfigReader.getProperty("country"),
+                ConfigReader.getProperty("street"),ConfigReader.getProperty("apartment"),
+                ConfigReader.getProperty("zipcode"),ConfigReader.getProperty("towncity"),
+                "",ConfigReader.getProperty("phone"));
         ReusableMethods.waitForVisibility(addressAdd.verifyState,15);
         addressAdd.verifyState.getText().equals("Province is a required field.");
         Reporter.log("Province Boş Geçilemez");
     }
     @Test(dependsOnMethods = "tc01LoginMyAccount")
     public void tc09BlankPhone(){
-        billingAddressAdd("Emre","tatar","techpro","Turkey","Uzunİnce",
-                "Dünya","1234","Erzurum","Erzurum","");
+        billingAddressAdd(ConfigReader.getProperty("firstname"),ConfigReader.getProperty("lastname"),
+                ConfigReader.getProperty("company"),ConfigReader.getProperty("country"),
+                ConfigReader.getProperty("street"),ConfigReader.getProperty("apartment"),
+                ConfigReader.getProperty("zipcode"),ConfigReader.getProperty("towncity"),
+                ConfigReader.getProperty("province"),"");
         ReusableMethods.waitForVisibility(addressAdd.verifyPhone,15);
         addressAdd.verifyPhone.getText().equals("Province is a required field.");
         Reporter.log("Phone Number Boş Geçilemez");
