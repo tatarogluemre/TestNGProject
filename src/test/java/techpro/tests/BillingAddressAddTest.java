@@ -28,7 +28,6 @@ public class BillingAddressAddTest {
         homePage.loginButton.click();
         ReusableMethods.waitForVisibility(homePage.signOut,15);
         assert homePage.signOut.isDisplayed();
-
         homePage.myAccountLink.click();
         myAccount=new MyAccount();
         assert myAccount.myAccountText.getText().equals("My Account");
@@ -112,7 +111,7 @@ public class BillingAddressAddTest {
                 ConfigReader.getProperty("company"),ConfigReader.getProperty("country"),
                 ConfigReader.getProperty("street"),ConfigReader.getProperty("apartment"),
                 ConfigReader.getProperty("zipcode"),ConfigReader.getProperty("towncity"),
-                "",ConfigReader.getProperty("phone"));
+                null,ConfigReader.getProperty("phone"));
         ReusableMethods.waitForVisibility(addressAdd.verifyState,15);
         addressAdd.verifyState.getText().equals("Province is a required field.");
         Reporter.log("Province Boş Geçilemez");
@@ -128,9 +127,6 @@ public class BillingAddressAddTest {
         addressAdd.verifyPhone.getText().equals("Province is a required field.");
         Reporter.log("Phone Number Boş Geçilemez");
     }
-
-
-
 
     public void billingAddressAdd( String firstName, String lastName,String company,
                                    String country,String street,String apartment,String zipCode,
