@@ -18,6 +18,7 @@
                     <include name="tc07BlankTownCity"/>
                     <include name="tc08BlankProvinceState"/>
                     <include name="tc09BlankPhone"/>
+                    <include name="tc10BillingAddresAdd"/>
                 </methods>
             </class>
         </classes>

@@ -127,6 +127,17 @@ public class BillingAddressAddTest {
         addressAdd.verifyPhone.getText().equals("Province is a required field.");
         Reporter.log("Phone Number Boş Geçilemez");
     }
+    @Test(dependsOnMethods = "tc01LoginMyAccount")
+    public void tc10BillingAddresAdd(){
+        billingAddressAdd(ConfigReader.getProperty("firstname"),ConfigReader.getProperty("lastname"),
+                ConfigReader.getProperty("company"),ConfigReader.getProperty("country"),
+                ConfigReader.getProperty("street"),ConfigReader.getProperty("apartment"),
+                ConfigReader.getProperty("zipcode"),ConfigReader.getProperty("towncity"),
+                ConfigReader.getProperty("province"),ConfigReader.getProperty("phone"));
+        ReusableMethods.waitForVisibility(addressAdd.verifyPhone,15);
+        addressAdd.verifyPhone.getText().contains("successfully");
+        Reporter.log("Billing Address Eklenmelidir.");
+    }
 
     public void billingAddressAdd( String firstName, String lastName,String company,
                                    String country,String street,String apartment,String zipCode,

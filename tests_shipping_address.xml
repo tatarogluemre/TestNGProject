@@ -17,6 +17,7 @@
                     <include name="tc06BlankZipCode"/>
                     <include name="tc07BlankTownCity"/>
                     <include name="tc08BlankProvinceState"/>
+                    <include name="tc09ShippingingAddresAdd"/>
                 </methods>
             </class>
         </classes>

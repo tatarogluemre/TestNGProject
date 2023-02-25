@@ -113,6 +113,17 @@ public class ShippingAddressAddTest {
         addressAdd.verifyState.getText().equals("Province is a required field.");
         Reporter.log("Province Boş Geçilemez");
     }
+    @Test(dependsOnMethods = "tc01LoginMyAccount")
+    public void tc09ShippingAddressAdd(){
+        shippingAddressAdd(ConfigReader.getProperty("firstname"),ConfigReader.getProperty("lastname"),
+                ConfigReader.getProperty("company"),ConfigReader.getProperty("country"),
+                ConfigReader.getProperty("street"),ConfigReader.getProperty("apartment"),
+                ConfigReader.getProperty("zipcode"),ConfigReader.getProperty("towncity"),
+                ConfigReader.getProperty("province"));
+        ReusableMethods.waitForVisibility(addressAdd.verifyState,15);
+        addressAdd.verifyState.getText().contains("successfully");
+        Reporter.log("Shipping Address Eklenmelidir.");
+    }
 
     public void shippingAddressAdd( String firstName, String lastName,String company,
                                    String country,String street,String apartment,String zipCode,
